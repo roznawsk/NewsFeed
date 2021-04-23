@@ -37,7 +37,8 @@ class _ArticleViewState extends State<ArticleView> {
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
                 onTap: () {
-                  // favoriteArticles.add();
+                  favoriteArticles.add(widget.article);
+                  print(favoriteArticles);
                 },
                 child: Icon(
                     Icons.favorite

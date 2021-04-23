@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_feed/main.dart';
 import 'package:news_feed/views/article_view.dart';
 import 'package:news_feed/category_news.dart';
 import 'package:news_feed/helper/data.dart';
@@ -56,10 +57,7 @@ class _HomeState extends State<Home> {
     return <Widget>[
       Articles(loading: loading, articles: articles),
       SearchView(),
-      Text(
-        'Index 2: Favorites',
-        style: optionStyle,
-      ),
+      Articles(loading: false, articles: favoriteArticles),
     ];
   }
 
