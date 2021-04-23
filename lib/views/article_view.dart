@@ -1,13 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:news_feed/models/article_model.dart';
 import 'package:webview_flutter/webview_flutter.dart';
+import 'package:news_feed/main.dart';
+
 
 class ArticleView extends StatefulWidget {
 
-  final String blogUrl;
+  final ArticleModel article;
 
-  ArticleView({this.blogUrl});
+  ArticleView({this.article});
 
   @override
   _ArticleViewState createState() => _ArticleViewState();
@@ -33,9 +36,11 @@ class _ArticleViewState extends State<ArticleView> {
           Padding(
               padding: EdgeInsets.only(right: 20.0),
               child: GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  // favoriteArticles.add();
+                },
                 child: Icon(
-                    Icons.more_vert
+                    Icons.favorite
                 ),
               )
           ),
@@ -43,7 +48,7 @@ class _ArticleViewState extends State<ArticleView> {
       ),
       body: Container(
         child: WebView(
-          initialUrl: widget.blogUrl,
+          initialUrl: widget.article.url,
           onWebViewCreated: ((WebViewController webViewController){
             _completer.complete(webViewController);
           }),

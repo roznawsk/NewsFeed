@@ -15,7 +15,7 @@ class BlogTile extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => ArticleView(
-                blogUrl: article.url
+                article: article,
             )));
       },
       child: Container(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:news_feed/models/article_model.dart';
 import 'home.dart';
 import 'category_news.dart';
 import 'views/article_view.dart';
 
+
+List<ArticleModel> favoriteArticles = [];
 
 void main() {
   runApp(MyApp());

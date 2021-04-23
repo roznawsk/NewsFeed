@@ -8,42 +8,6 @@ import 'package:news_feed/widgets/blog_tile.dart';
 import 'package:news_feed/widgets/category_tile.dart';
 
 
-// class Articles extends StatefulWidget {
-//   @override
-//   _ArticlesState createState() => _ArticlesState();
-// }
-//
-// class _ArticlesState extends State<Articles> {
-//
-//   List<CategoryModel> categories = [];
-//   List<ArticleModel> articles = [];
-//
-//   bool _loading = true;
-//
-//   @override
-//   void initState(){
-//     super.initState();
-//     categories = getCategories();
-//     getNews();
-//   }
-//
-//   getNews() async{
-//     News news = News();
-//     await news.getNews();
-//     articles = news.news;
-//     setState(() {
-//       _loading = false;
-//     });
-//   }
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return _loading ? ArticlesLoading() :
-//     ArticleList(categories: categories, articles: articles);
-//   }
-// }
-
-
 class Articles extends StatelessWidget {
   final List<ArticleModel> articles;
   final bool loading;
