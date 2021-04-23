@@ -23,7 +23,7 @@ class News{
             author: element["author"],
             description: element["description"],
             urlToImage: element["urlToImage"],
-            articleUrl: element["url"],
+            url: element["url"],
             content: element["content"]
           );
           news.add(articleModel);
@@ -55,7 +55,7 @@ class CategoryNews{
               author: element["author"],
               description: element["description"],
               urlToImage: element["urlToImage"],
-              articleUrl: element["url"],
+              url: element["url"],
               content: element["content"]
           );
           news.add(articleModel);
@@ -87,7 +87,7 @@ class SearchNews{
               author: element["author"],
               description: element["description"],
               urlToImage: element["urlToImage"],
-              articleUrl: element["url"],
+              url: element["url"],
               content: element["content"]
           );
           news.add(articleModel);

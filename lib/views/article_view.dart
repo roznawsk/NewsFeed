@@ -21,14 +21,25 @@ class _ArticleViewState extends State<ArticleView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Row(
-            children: <Widget> [
-              Text("News"),
-              Text("Feed", style: TextStyle(
-                  color: Colors.blue
-              ),),
-            ],
-          )
+        title: Row(
+          children: <Widget> [
+            Text("News"),
+            Text("Feed", style: TextStyle(
+                color: Colors.blue
+            ),),
+          ],
+        ),
+        actions: [
+          Padding(
+              padding: EdgeInsets.only(right: 20.0),
+              child: GestureDetector(
+                onTap: () {},
+                child: Icon(
+                    Icons.more_vert
+                ),
+              )
+          ),
+        ],
       ),
       body: Container(
         child: WebView(

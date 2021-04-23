@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:news_feed/models/article_model.dart';
 
 import '../views/article_view.dart';
 
 class BlogTile extends StatelessWidget {
-  final String imgUrl, title, desc, content, posturl;
+  final ArticleModel article;
 
-  BlogTile(
-      {this.imgUrl, this.desc, this.title, this.content, @required this.posturl});
+  BlogTile({this.article});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BlogTile extends StatelessWidget {
       onTap: () {
         Navigator.push(context, MaterialPageRoute(
             builder: (context) => ArticleView(
-                blogUrl: posturl
+                blogUrl: article.url
             )));
       },
       child: Container(
@@ -40,7 +40,7 @@ class BlogTile extends StatelessWidget {
                   ClipRRect(
                       borderRadius: BorderRadius.circular(6),
                       child: Image.network(
-                        imgUrl,
+                        article.urlToImage,
                         height: 200,
                         width: MediaQuery
                             .of(context)
@@ -50,7 +50,7 @@ class BlogTile extends StatelessWidget {
                       )),
                   SizedBox(height: 12,),
                   Text(
-                    title,
+                    article.title,
                     maxLines: 2,
                     style: TextStyle(
                         color: Colors.black87,
@@ -61,7 +61,7 @@ class BlogTile extends StatelessWidget {
                     height: 4,
                   ),
                   Text(
-                    desc,
+                    article.description,
                     maxLines: 2,
                     style: TextStyle(color: Colors.black54, fontSize: 14),
                   )

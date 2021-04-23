@@ -111,11 +111,7 @@ class ArticleList extends StatelessWidget {
                       physics: ClampingScrollPhysics(),
                       itemBuilder: (context, index){
                         return BlogTile(
-                          imgUrl: articles[index].urlToImage,
-                          title: articles[index].title,
-                          desc: articles[index].description,
-                          content: articles[index].content,
-                          posturl: articles[index].articleUrl,
+                          article: articles[index],
                         );
                       },
                     )
