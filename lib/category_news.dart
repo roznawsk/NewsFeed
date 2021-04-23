@@ -3,6 +3,10 @@ import 'package:news_feed/article_view.dart';
 import 'package:news_feed/helper/news.dart';
 import 'package:news_feed/home.dart';
 import 'package:news_feed/models/article_model.dart';
+import 'package:news_feed/widgets/blog_tile.dart';
+
+import 'home.dart';
+import 'home.dart';
 
 class CategoryView extends StatefulWidget {
 

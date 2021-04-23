@@ -6,6 +6,8 @@ import 'package:news_feed/helper/data.dart';
 import 'package:news_feed/models/article_model.dart';
 import 'package:news_feed/models/category_model.dart';
 import 'package:news_feed/search_view.dart';
+import 'package:news_feed/widgets/blog_tile.dart';
+import 'package:news_feed/widgets/category_tile.dart';
 
 import 'helper/news.dart';
 
@@ -114,110 +116,69 @@ class _HomeState extends State<Home> {
   }
 }
 
-class CategoryTile extends StatelessWidget {
 
-  final imageUrl, categoryName;
-  CategoryTile(this.imageUrl, this.categoryName);
+/// This is the stateful widget that the main application instantiates.
+class MyStatefulWidget extends StatefulWidget {
+  const MyStatefulWidget({Key key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: (){
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context) => CategoryView(
-              category: categoryName.toLowerCase()
-            )
-          )
-        );
-      },
-      child: Container(
-        child: Stack(
-          children: <Widget> [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(6),
-                child:Image.network(imageUrl, width: 120, height: 60, fit: BoxFit.cover)
-            ),
-            Center(
-              child: Container(
-                child: Text(categoryName, style: TextStyle(
-                  color: Colors.white
-                ))
-              ),
-            )
-          ]
-        )
-      ),
-    );
-  }
+  _MyStatefulWidgetState createState() => _MyStatefulWidgetState();
 }
 
+/// This is the private State class that goes with MyStatefulWidget.
+class _MyStatefulWidgetState extends State<MyStatefulWidget> {
+  int _selectedIndex = 0;
+  static const TextStyle optionStyle =
+  TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+  static const List<Widget> _widgetOptions = <Widget>[
+    Text(
+      'Index 0: Home',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 1: Business',
+      style: optionStyle,
+    ),
+    Text(
+      'Index 2: School',
+      style: optionStyle,
+    ),
+  ];
 
-class BlogTile extends StatelessWidget {
-  final String imgUrl, title, desc, content, posturl;
-
-  BlogTile(
-      {this.imgUrl, this.desc, this.title, this.content, @required this.posturl});
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        Navigator.push(context, MaterialPageRoute(
-            builder: (context) => ArticleView(
-              blogUrl: posturl
-            )));
-      },
-      child: Container(
-          margin: EdgeInsets.only(bottom: 24),
-          width: MediaQuery
-              .of(context)
-              .size
-              .width,
-          child: Container(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 16),
-              alignment: Alignment.bottomCenter,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(6),
-                      bottomLeft: Radius.circular(6))
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  ClipRRect(
-                      borderRadius: BorderRadius.circular(6),
-                      child: Image.network(
-                        imgUrl,
-                        height: 200,
-                        width: MediaQuery
-                            .of(context)
-                            .size
-                            .width,
-                        fit: BoxFit.cover,
-                      )),
-                  SizedBox(height: 12,),
-                  Text(
-                    title,
-                    maxLines: 2,
-                    style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  Text(
-                    desc,
-                    maxLines: 2,
-                    style: TextStyle(color: Colors.black54, fontSize: 14),
-                  )
-                ],
-              ),
-            ),
-          )),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('BottomNavigationBar Sample'),
+      ),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.business),
+            label: 'Business',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.school),
+            label: 'School',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
     );
   }
 }
