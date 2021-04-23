@@ -1,24 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'home.dart';
 import 'category_news.dart';
-import 'article_view.dart';
+import 'views/article_view.dart';
 
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(MyApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.black,
+  ));
+}
 
 class MyApp extends StatelessWidget {
 
-  final String title = "Example";
+  final String title = "NewsFeed";
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: title,
       theme: ThemeData(
         primaryColor: Colors.white,
       ),
-      // home: Home(),
       home: Home(),
+      // home: MyStatefulWidget(),
     );
   }
 }

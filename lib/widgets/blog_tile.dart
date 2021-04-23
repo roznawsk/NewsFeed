@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../article_view.dart';
+import '../views/article_view.dart';
 
 class BlogTile extends StatelessWidget {
   final String imgUrl, title, desc, content, posturl;

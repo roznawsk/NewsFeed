@@ -66,6 +66,7 @@ class CategoryNews{
   }
 }
 
+
 class SearchNews{
 
   List<ArticleModel> news = [];
